@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script src="bookmarklet-maker.js"></script>
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script>
+      $(function() {
+        $("#gen").click(function() {
+          var js = $("#js").html().split("\n");
+          var css = $("#css").html().split("\n");
+          var scr = $("#extra").html();
+          var out = BookmarkletMaker.MakeBookmarklet(false, css, js, scr);
+          $("#output").html(out);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr><td>Javascripts (one per line)</td><td><textarea id="js"></textarea></td></tr>
+      <tr><td>CSS Files (one per line)</td><td><textarea id="css"></textarea></td></tr>
+      <tr><td>Extra Javascript (only single quotes)</td><td><textarea id="extra"></textarea></td></tr>
+      <tr><td>Include jQuery?</td><td><input type="checkbox" id="jq" /></td></tr>
+    </table>
+    <button id="gen">Generate</button>
+    <span id="output"></span>
+  </body>
+</html>
