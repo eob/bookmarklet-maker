@@ -5,10 +5,22 @@
     <script>
       $(function() {
         $("#gen").click(function() {
-          var js = $("#js").html().split("\n");
-          var css = $("#css").html().split("\n");
-          var scr = $("#extra").html();
-          var out = BookmarkletMaker.MakeBookmarklet(false, css, js, scr);
+          var js = $("#js").val().trim();
+          var css = $("#css").val().trim();
+          var scr = $("#extra").val();
+          var anchor = $("#anchor").val();
+          if (js.length > 0) {
+            js = js.split("\n");
+          } else {
+            js = [];
+          }
+          if (css.length > 0) {
+            css = css.split("\n");
+          } else {
+            css = [];
+          }
+
+          var out = BookmarkletMaker.MakeBookmarklet(false, css, js, scr, anchor);
           $("#output").html(out);
         });
       });
@@ -16,6 +28,7 @@
   </head>
   <body>
     <table>
+      <tr><td>Anchor:</td><td><input id="anchor" /></td></tr>
       <tr><td>Javascripts (one per line)</td><td><textarea id="js"></textarea></td></tr>
       <tr><td>CSS Files (one per line)</td><td><textarea id="css"></textarea></td></tr>
       <tr><td>Extra Javascript (only single quotes)</td><td><textarea id="extra"></textarea></td></tr>

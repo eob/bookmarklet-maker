@@ -1,0 +1,5 @@
+Bookmarklet Maker
+=================
+
+A Javascript utility to help creating "bootstrapper" bookmarklets whose primary
+purpose is to hot-load Javascipt and CSS files hosted elsewhere.

@@ -25,7 +25,7 @@
 var BookmarkletMaker = {
 
   MaybeAddJQuery: function() {
-    return "if (typeof $ == 'undefined') {" +
+    return "if (typeof jQuery == 'undefined') {" +
            this.ImportJavascript(jquery) +
            "}";
   },
@@ -41,10 +41,11 @@ var BookmarkletMaker = {
            "s.setAttribute('href', '" + url + "');" +
            "s.setAttribute('rel', 'stylesheet');" +
            "s.setAttribute('type', 'text/css');" +
-           "document.getElementByTagName('body')[0].appendChild(s);";
+           "document.getElementsByTagName('body')[0].appendChild(s);";
   },
 
   Sanitize: function(javascript) {
+    alert(javascript);
     return javascript;
   },
 
@@ -54,7 +55,7 @@ var BookmarkletMaker = {
     if (jquery) {
       js += this.MaybeAddJQuery();
     }
-
+    
     for (var i = 0; i < cssUrls.length; i++) {
       js += this.ImportCss(cssUrls[i]);
     }
