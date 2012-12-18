@@ -41,7 +41,7 @@ var BookmarkletMaker = {
            "s.setAttribute('href', '" + url + "');" +
            "s.setAttribute('rel', 'stylesheet');" +
            "s.setAttribute('type', 'text/css');" +
-           "document.getElementsByTagName('body')[0].appendChild(s);";
+           "document.getElementsByTagName('head')[0].appendChild(s);";
   },
 
   Sanitize: function(javascript) {
